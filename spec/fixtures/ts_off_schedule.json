@@ -1,0 +1,617 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-03T06:48:44.104Z",
+    "ts_fsrs_package": "5.4.2",
+    "fsrs_version": "v5.4.2 using FSRS-6.0",
+    "enable_fuzz": false,
+    "note": "Reviews happen at explicit offsets, not at the due date. Covers same-session repeats, early reviews and overdue reviews."
+  },
+  "scenarios": [
+    {
+      "label": "same session, 30s apart, all Good",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:30.000Z",
+          "waited_ms": 30000,
+          "output": {
+            "due": "2024-01-03T00:00:30.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11121424,
+            "elapsed_days": 0,
+            "scheduled_days": 2,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:00:30.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:01:00.000Z",
+          "waited_ms": 30000,
+          "output": {
+            "due": "2024-01-04T00:01:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.1043314,
+            "elapsed_days": 0,
+            "scheduled_days": 3,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:01:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:01:30.000Z",
+          "waited_ms": 30000,
+          "output": {
+            "due": "2024-01-04T00:01:30.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.09745544,
+            "elapsed_days": 0,
+            "scheduled_days": 3,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:01:30.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "same session, missed then recovered",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Again",
+          "review_time": "2024-01-01T00:00:45.000Z",
+          "waited_ms": 45000,
+          "output": {
+            "due": "2024-01-01T00:01:45.000Z",
+            "stability": 0.77508398,
+            "difficulty": 7.39450274,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:45.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:02:45.000Z",
+          "waited_ms": 120000,
+          "output": {
+            "due": "2024-01-01T00:12:45.000Z",
+            "stability": 0.8281648,
+            "difficulty": 7.38233661,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 3,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:02:45.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:07:45.000Z",
+          "waited_ms": 300000,
+          "output": {
+            "due": "2024-01-02T00:07:45.000Z",
+            "stability": 0.88103231,
+            "difficulty": 7.37018264,
+            "elapsed_days": 0,
+            "scheduled_days": 1,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:07:45.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "same session, answered instantly twice",
+      "steps": [
+        {
+          "rating": "Easy",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-09T00:00:00.000Z",
+            "stability": 8.2956,
+            "difficulty": 1,
+            "elapsed_days": 0,
+            "scheduled_days": 8,
+            "learning_steps": 0,
+            "reps": 1,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Easy",
+          "review_time": "2024-01-01T00:00:01.000Z",
+          "waited_ms": 1000,
+          "output": {
+            "due": "2024-01-14T00:00:01.000Z",
+            "stability": 13.04606469,
+            "difficulty": 1,
+            "elapsed_days": 0,
+            "scheduled_days": 13,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:00:01.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "reviewed early, half the interval",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:10:00.000Z",
+          "waited_ms": 600000,
+          "output": {
+            "due": "2024-01-03T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11121424,
+            "elapsed_days": 0,
+            "scheduled_days": 2,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-02T00:10:00.000Z",
+          "waited_ms": 86400000,
+          "output": {
+            "due": "2024-01-09T00:10:00.000Z",
+            "stability": 7.31918604,
+            "difficulty": 2.1043314,
+            "elapsed_days": 1,
+            "scheduled_days": 7,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-02T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-05T00:10:00.000Z",
+          "waited_ms": 259200000,
+          "output": {
+            "due": "2024-01-25T00:10:00.000Z",
+            "stability": 19.8469837,
+            "difficulty": 2.09745544,
+            "elapsed_days": 3,
+            "scheduled_days": 20,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-05T00:10:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "reviewed very early, one day into a long interval",
+      "steps": [
+        {
+          "rating": "Easy",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-09T00:00:00.000Z",
+            "stability": 8.2956,
+            "difficulty": 1,
+            "elapsed_days": 0,
+            "scheduled_days": 8,
+            "learning_steps": 0,
+            "reps": 1,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-02T00:00:00.000Z",
+          "waited_ms": 86400000,
+          "output": {
+            "due": "2024-01-15T00:00:00.000Z",
+            "stability": 13.48506225,
+            "difficulty": 1,
+            "elapsed_days": 1,
+            "scheduled_days": 13,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-02T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-03T00:00:00.000Z",
+          "waited_ms": 86400000,
+          "output": {
+            "due": "2024-01-21T00:00:00.000Z",
+            "stability": 18.37626562,
+            "difficulty": 1,
+            "elapsed_days": 1,
+            "scheduled_days": 18,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-03T00:00:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "overdue by a week",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:10:00.000Z",
+          "waited_ms": 600000,
+          "output": {
+            "due": "2024-01-03T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11121424,
+            "elapsed_days": 0,
+            "scheduled_days": 2,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-10T00:10:00.000Z",
+          "waited_ms": 777600000,
+          "output": {
+            "due": "2024-02-03T00:10:00.000Z",
+            "stability": 24.00986456,
+            "difficulty": 2.1043314,
+            "elapsed_days": 9,
+            "scheduled_days": 24,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-10T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-02-09T00:10:00.000Z",
+          "waited_ms": 2592000000,
+          "output": {
+            "due": "2024-05-22T00:10:00.000Z",
+            "stability": 103.13685288,
+            "difficulty": 2.09745544,
+            "elapsed_days": 30,
+            "scheduled_days": 103,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-02-09T00:10:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "overdue by a year",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:10:00.000Z",
+          "waited_ms": 600000,
+          "output": {
+            "due": "2024-01-03T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11121424,
+            "elapsed_days": 0,
+            "scheduled_days": 2,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-12-31T00:10:00.000Z",
+          "waited_ms": 31536000000,
+          "output": {
+            "due": "2025-03-06T00:10:00.000Z",
+            "stability": 64.74327506,
+            "difficulty": 2.1043314,
+            "elapsed_days": 365,
+            "scheduled_days": 65,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-12-31T00:10:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "overdue and forgotten",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:10:00.000Z",
+          "waited_ms": 600000,
+          "output": {
+            "due": "2024-01-03T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11121424,
+            "elapsed_days": 0,
+            "scheduled_days": 2,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Again",
+          "review_time": "2024-07-19T00:10:00.000Z",
+          "waited_ms": 17280000000,
+          "output": {
+            "due": "2024-07-19T00:20:00.000Z",
+            "stability": 1.18733315,
+            "difficulty": 7.39223814,
+            "elapsed_days": 200,
+            "scheduled_days": 0,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 1,
+            "state": 3,
+            "last_review": "2024-07-19T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-07-19T00:20:00.000Z",
+          "waited_ms": 600000,
+          "output": {
+            "due": "2024-07-20T00:20:00.000Z",
+            "stability": 1.23353896,
+            "difficulty": 7.38007427,
+            "elapsed_days": 0,
+            "scheduled_days": 1,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 1,
+            "state": 2,
+            "last_review": "2024-07-19T00:20:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "label": "lapse, relearn next day",
+      "steps": [
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:00:00.000Z",
+          "waited_ms": 0,
+          "output": {
+            "due": "2024-01-01T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11810397,
+            "elapsed_days": 0,
+            "scheduled_days": 0,
+            "learning_steps": 1,
+            "reps": 1,
+            "lapses": 0,
+            "state": 1,
+            "last_review": "2024-01-01T00:00:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-01T00:10:00.000Z",
+          "waited_ms": 600000,
+          "output": {
+            "due": "2024-01-03T00:10:00.000Z",
+            "stability": 2.3065,
+            "difficulty": 2.11121424,
+            "elapsed_days": 0,
+            "scheduled_days": 2,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-01T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-04T00:10:00.000Z",
+          "waited_ms": 259200000,
+          "output": {
+            "due": "2024-01-18T00:10:00.000Z",
+            "stability": 13.8358397,
+            "difficulty": 2.1043314,
+            "elapsed_days": 3,
+            "scheduled_days": 14,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": 2,
+            "last_review": "2024-01-04T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Again",
+          "review_time": "2024-01-12T00:10:00.000Z",
+          "waited_ms": 691200000,
+          "output": {
+            "due": "2024-01-12T00:20:00.000Z",
+            "stability": 1.633233,
+            "difficulty": 7.38997579,
+            "elapsed_days": 8,
+            "scheduled_days": 0,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 1,
+            "state": 3,
+            "last_review": "2024-01-12T00:10:00.000Z"
+          }
+        },
+        {
+          "rating": "Good",
+          "review_time": "2024-01-13T00:10:00.000Z",
+          "waited_ms": 86400000,
+          "output": {
+            "due": "2024-01-17T00:10:00.000Z",
+            "stability": 3.65573592,
+            "difficulty": 7.37781418,
+            "elapsed_days": 1,
+            "scheduled_days": 4,
+            "learning_steps": 0,
+            "reps": 5,
+            "lapses": 1,
+            "state": 2,
+            "last_review": "2024-01-13T00:10:00.000Z"
+          }
+        }
+      ]
+    }
+  ]
+}
