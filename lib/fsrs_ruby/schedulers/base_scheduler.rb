@@ -63,8 +63,8 @@ module FsrsRuby
         @current.last_review = @review_time
         @current.reps += 1
 
-        # Initialize seed strategy if provided
-        @seed_strategy = @strategies[:seed]
+        @seed_strategy = @strategies[:seed] || Strategies.method(:default_init_seed_strategy)
+        @algorithm.seed = @seed_strategy.call(self)
       end
 
       # Build review log
