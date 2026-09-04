@@ -14,23 +14,6 @@ RSpec.describe 'Interval fuzzing' do
     )
   end
 
-  describe 'the seed strategy' do
-    it 'is wired up by default so the algorithm seeds its PRNG deterministically' do
-      fsrs = FsrsRuby.new(enable_fuzz: true)
-      fsrs.next(FsrsRuby.create_empty_card(now), now, FsrsRuby::Rating::EASY)
-
-      expect(fsrs.seed).not_to be_nil
-    end
-
-    it 'uses a caller-supplied strategy when one is given' do
-      fsrs = FsrsRuby.new(enable_fuzz: true)
-      fsrs.use_strategy(:seed, ->(_scheduler) { 'card-42' })
-      fsrs.next(FsrsRuby.create_empty_card(now), now, FsrsRuby::Rating::EASY)
-
-      expect(fsrs.seed).to eq('card-42')
-    end
-  end
-
   describe 'spread across cards' do
     it 'gives identical cards different due dates when seeded per card' do
       dues = Array.new(20) do |i|

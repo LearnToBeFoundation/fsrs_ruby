@@ -50,4 +50,28 @@ RSpec.describe FsrsRuby::Strategies do
       expect(seed).to eq('test_card_1235')
     end
   end
+
+  # The two examples above call the strategy directly, so they passed while
+  # BaseScheduler#init assigned the strategy and never invoked it. These check
+  # the wiring instead: that a review actually seeds the algorithm.
+  describe 'wiring into a review' do
+    let(:now) { Time.parse('2024-01-01T00:00:00.000Z') }
+
+    it 'seeds the algorithm from the default strategy when no custom one is set' do
+      fsrs = FsrsRuby.new(enable_fuzz: true)
+
+      fsrs.next(FsrsRuby.create_empty_card(now), now, FsrsRuby::Rating::GOOD)
+
+      expect(fsrs.seed).not_to be_nil
+    end
+
+    it 'seeds the algorithm from a caller-supplied strategy when one is set' do
+      fsrs = FsrsRuby.new(enable_fuzz: true)
+      fsrs.use_strategy(:seed, ->(_scheduler) { 'card-42' })
+
+      fsrs.next(FsrsRuby.create_empty_card(now), now, FsrsRuby::Rating::GOOD)
+
+      expect(fsrs.seed).to eq('card-42')
+    end
+  end
 end
